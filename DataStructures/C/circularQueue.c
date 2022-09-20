@@ -13,6 +13,7 @@ void createEmptyQueue(circularQueue *cq)
 {
     cq->front = cq->rear = -1;
 }
+
 int isFull(circularQueue *cq)
 {
     if((cq->front == cq->rear + 1) || (cq->front == 0 && cq->rear == MAX - 1))
