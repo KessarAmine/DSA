@@ -1,4 +1,89 @@
 // Heap data structure is a complete binary tree that satisfies the heap property
 // always greater than its child node/s and the key of the root node is the largest among all other nodes. This property is also called max heap property.
 // always smaller than the child node/s and the key of the root node is the smallest among all other nodes. This property is also called min heap property.
-#include<unistd.h>
+// Max-Heap data structure in C
+#include <stdio.h>
+
+
+void swap(int *a, int *b)
+{
+    int temp = *b;
+    *b = *a;
+    *a = temp;
+}
+
+void heapify(int array[], int *size, int i)
+{
+    if ((*size) == 1)
+    {
+        printf("Single element in the heap");
+    }
+    else
+    {
+        int largest = i;
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+        if (l < (*size) && array[l] > array[largest])
+            largest = l;
+        if (r < (*size) && array[r] > array[largest])
+            largest = r;
+        if (largest != i)
+        {
+            swap(&array[i], &array[largest]);
+            heapify(array, size, largest);
+        }
+    }
+}
+
+void insert(int array[], int newNum, int *size)
+{
+    array[(*size)] = newNum;
+    (*size) += 1;
+    if ((*size) > 1)//we don't use heapify when we add just the head
+    {
+        for (int i = (*size) / 2 - 1; i >= 0; i--)
+            heapify(array, size, i);
+    }
+}
+
+void deleteRoot(int array[], int num, int *size)
+{
+    int i;
+    for (i = 0; i < (*size); i++)
+    {
+        if (num == array[i])
+            break;
+    }
+    swap(&array[i], &array[(*size) - 1]);
+    (*size) -= 1;
+    for (int i = (*size) / 2 - 1; i >= 0; i--)
+        heapify(array, size, i);
+}
+
+void printArray(int array[], int size)
+{
+    for (int i = 0; i < size; ++i)
+        printf("%d ", array[i]);
+    printf("\n");
+}
+
+int main()
+{
+    int array[10];
+    int size = 0;
+
+    insert(array, 3, &size);
+    insert(array, 4, &size);
+    insert(array, 9, &size);
+    insert(array, 5, &size);
+    insert(array, 2, &size);
+
+    printf("Max-Heap array: ");
+    printArray(array, size);
+
+    deleteRoot(array, 4, &size);
+
+    printf("After deleting an element: ");
+
+    printArray(array, size);
+}
