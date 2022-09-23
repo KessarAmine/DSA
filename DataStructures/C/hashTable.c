@@ -125,60 +125,47 @@ void add1(char *c)
 }
 int main()
 {
-  int choice, key, data, n;
-  int c = 0;
-  init_array();
+    int choice, key, data, n;
+    int c = 0;
+    init_array();
+    do
+    {
+        printf("1.Insert item in the Hash Table"
+            "\n2.Remove item from the Hash Table"
+            "\n3.Check the size of Hash Table"
+            "\n4.Display a Hash Table"
+            "\n\nPlease enter your choice: ");
 
-  do
-  {
-  printf("1.Insert item in the Hash Table"
-     "\n2.Remove item from the Hash Table"
-     "\n3.Check the size of Hash Table"
-     "\n4.Display a Hash Table"
-     "\n\nPlease enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+            case 1:
+                printf("Enter key -:\t");
+                scanf("%d", &key);
+                printf("Enter data -:\t");
+                scanf("%d", &data);
+                insert(key, data);
+                    break;
 
-  scanf("%d", &choice);
-  switch (choice)
-  {
-  case 1:
+            case 2:
+                printf("Enter the key to delete-:");
+                scanf("%d", &key);
+                remove_element(key);
+                break;
 
-    printf("Enter key -:\t");
-    scanf("%d", &key);
-    printf("Enter data -:\t");
-    scanf("%d", &data);
-    insert(key, data);
+            case 3:
+                n = size_of_hashtable();
+                printf("Size of Hash Table is-:%d\n", n);
+                break;
 
-    break;
+            case 4:
+                display();
+                break;
 
-  case 2:
-
-    printf("Enter the key to delete-:");
-    scanf("%d", &key);
-    remove_element(key);
-
-    break;
-
-  case 3:
-
-    n = size_of_hashtable();
-    printf("Size of Hash Table is-:%d\n", n);
-
-    break;
-
-  case 4:
-
-    display();
-
-    break;
-
-  default:
-
-    printf("Invalid Input\n");
-  }
-
-  printf("\nDo you want to continue (press 1 for yes): ");
-  scanf("%d", &c);
-
-  } while (c == 1);
-
+            default:
+                printf("Invalid Input\n");
+        }
+        printf("\nDo you want to continue (press 1 for yes): ");
+        scanf("%d", &c);
+    }while (c == 1);
 }
