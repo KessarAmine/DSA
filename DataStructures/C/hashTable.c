@@ -50,7 +50,6 @@ void init_array()
         array[i].data = 0;
     }
 }
-
 void insert(int key, int data)
 {
     int index = hashFunction(key);
@@ -66,7 +65,6 @@ void insert(int key, int data)
     else
         printf("\n Collision occured  \n");
 }
-
 void remove_element(int key)
 {
     int index = hashFunction(key);
@@ -91,19 +89,9 @@ void display()
             printf("\n key: %d array[%d]: %d \t", array[i].key, i, array[i].data);
     }
 }
-
 int size_of_hashtable()
 {
     return (size);
-}
-void add1(char *c)
-{
-    if((*c < 'Z' && *c >= 'A') || (*c < 'z' && *c >= 'a'))
-        (*c)++;
-    if(*c == 'Z')
-        *c = 'A';
-    if(*c == 'z')
-        *c = 'a';
 }
 int main()
 {
