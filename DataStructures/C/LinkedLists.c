@@ -326,6 +326,20 @@ int get_size_recursive(Node *Head)
         return 0;
     return 1 + get_size_recursive(Head->next);
 }
+void push(struct Node **head_ref, int new_data)
+{
+    /* allocate node */
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+
+    /* put in the data  */
+    new_node->data = new_data;
+
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+
+    /* move the head to point to the new node */
+    (*head_ref) = new_node;
+}
 Node *addition_twoLinkedList(Node *l1, Node *L2)
 {
     Node *temp1 = l1;
@@ -431,20 +445,7 @@ Node *addition_twoLinkedList(Node *l1, Node *L2)
     }
     return res;
 }
-void push(struct Node **head_ref, int new_data)
-{
-    /* allocate node */
-    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
 
-    /* put in the data  */
-    new_node->data = new_data;
-
-    /* link the old list off the new node */
-    new_node->next = (*head_ref);
-
-    /* move the head to point to the new node */
-    (*head_ref) = new_node;
-}
 bool search_iterrative(Node *Head, int x)
 {
     Node *temp = Head;

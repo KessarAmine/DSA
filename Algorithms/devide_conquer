@@ -1,0 +1,9 @@
+How Divide and Conquer Algorithms Work?
+Here are the steps involved:
+
+	Divide: 
+Divide the given problem into sub-problems using recursion.
+	Conquer: 
+Solve the smaller sub-problems recursively. If the subproblem is small enough, then solve it directly.
+	Combine: 
+Combine the solutions of the sub-problems that are part of the recursive process to solve the actual problem.

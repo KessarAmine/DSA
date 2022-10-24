@@ -1,0 +1,5 @@
+Hashing :
+their are two types of hasing :
+	traditional hashing : tyr to avoid collisions MD5
+	local sensitive hash : try to group as close as key to same value minHashing
+	The hash function should pass the chi quare test and the avalanche test
