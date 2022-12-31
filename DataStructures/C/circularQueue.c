@@ -109,7 +109,7 @@ int getValueAt(circularQueue *cq, int index)
         i = (i + 1) % MAX;
     return(cq->data[i]);
 }
-// Driver code
+
 int main() 
 {
     int ch;
